@@ -7,10 +7,13 @@ use App\Core\Container;
 use App\Provider\ConfigServiceProvider;
 use League\Container\ReflectionContainer;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
 error_reporting(0);
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
+
+$dotEnv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotEnv->load();
 
 $container = Container::getInstance();
 
@@ -24,9 +27,6 @@ foreach ($config->get('app.providers') as $provider) {
     $container->addServiceProvider(new $provider);
 }
 
-var_dump($container->get(Config::class)->get('app.name'));
-
-die();
 
 $app = new App();
 
