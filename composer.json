@@ -1,0 +1,22 @@
+{
+    "name": "claud/myframework",
+    "description": "A new framework",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Cláudio Oliveira",
+            "email": "franciscoclaudiooliveira@gmail.com"
+        }
+    ],
+    "require": {
+        "spatie/ignition": "^1.15",
+        "league/container": "^4.2",
+        "adbario/php-dot-notation": "^3.3"
+    }
+}
