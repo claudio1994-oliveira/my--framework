@@ -6,6 +6,6 @@ class App
 {
     public function run()
     {
-        echo "app run";
+        //
     }
 }
