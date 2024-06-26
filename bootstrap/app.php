@@ -9,6 +9,7 @@ use Laminas\Diactoros\Request;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
 use League\Container\ReflectionContainer;
 use League\Route\Router;
+use Psr\Container\ContainerInterface;
 
 error_reporting(0);
 
@@ -32,12 +33,9 @@ foreach ($config->get('app.providers') as $provider) {
 
 $app = new App($container);
 
+(require('../routes/web.php'))($app->getRouter(), $container);
 
 
-$app->getRouter()->get('/', function () {
-    var_dump("home");
-    die();
-});
 
 
 $app->run();
