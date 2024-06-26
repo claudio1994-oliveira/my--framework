@@ -30,19 +30,14 @@ foreach ($config->get('app.providers') as $provider) {
     $container->addServiceProvider(new $provider);
 }
 
-$app = new App();
+$app = new App($container);
 
-$router = $container->get(Router::class);
 
-$router->get('/', function () {
+
+$app->getRouter()->get('/', function () {
     var_dump("home");
     die();
 });
-
-$response = $router->dispatch($container->get(Request::class));
-
-
-(new SapiEmitter())->emit($response);
 
 
 $app->run();
