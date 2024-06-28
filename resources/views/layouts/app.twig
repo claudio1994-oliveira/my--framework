@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>No Framework</title>
+    <title>{% if block('title') is defined %} {{block('title')}} {% endif %}</title>
 </head>
 <body>
     <header>
@@ -13,6 +13,7 @@
     </header>
 
     <main>
+       <h1>{% block title %}{% endblock %}</h1>
       {% block content %}{% endblock %}
     </main>
 
