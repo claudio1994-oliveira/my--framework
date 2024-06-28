@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Framework</title>
+</head>
+<body>
+    <header>
+       <nav>
+        {% include 'layouts/partials/navigation.twig' %}
+       </nav>
+    </header>
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <!-- Seu rodapé aqui -->
+    </footer>
+</body>
+</html>
