@@ -1,2 +1,8 @@
 APP_NAME="No framework"
 APP_DEBUG=true
+
+DB_DRIVER=mysql
+DB_HOST=172.0.0.1
+DB_DATABASE=noframework
+DB_USERNAME=root
+DB_PASSWORD=root

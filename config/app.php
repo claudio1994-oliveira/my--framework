@@ -1,6 +1,7 @@
 <?php
 
 use App\Provider\AppServiceProvider;
+use App\Provider\DatabaseServiceProvider;
 use App\Provider\RequestServiceProvider;
 use App\Provider\RouteServiceProvider;
 use App\Provider\ViewServiceProvider;
@@ -15,6 +16,7 @@ return [
         RequestServiceProvider::class,
         RouteServiceProvider::class,
         ViewServiceProvider::class,
+        DatabaseServiceProvider::class,
     ],
 
 ];
