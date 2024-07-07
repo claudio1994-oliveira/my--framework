@@ -9,7 +9,7 @@
     <div>
         {% if users %}
            {% for user in users %}
-                <h4><a href="/users/{{user.id}}">{{ user.name }}</a> </h4>
+                <h4><a href="/users/{{user.id}}">{{ user.first_name }}</a> </h4>
             {% endfor %}
         {% else %}
             <p>No user details found.</p>
