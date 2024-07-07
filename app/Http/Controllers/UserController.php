@@ -8,21 +8,25 @@ use Laminas\Diactoros\Response;
 
 use Psr\Http\Message\ServerRequestInterface;
 
-class DashboardController
+class UserController
 {
     public function __construct(protected View $view)
     {
     }
 
-    public function __invoke(ServerRequestInterface $request)
+    public function __invoke(ServerRequestInterface $request, array $arguments)
     {
+
+        ['user' => $userId] = $arguments;
+
+        $user = User::find($userId);
 
         $response = new Response();
 
 
         $response->getBody()->write(
 
-            $this->view->render('dashboard.twig', ['users' => User::all()])
+            $this->view->render('user.twig', ['user' => $user])
 
         );
 

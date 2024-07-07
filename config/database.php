@@ -12,7 +12,7 @@ return [
         'password' => env('DB_PASSWORD'),
         'charset' => 'utf8',
         'collation' => 'utf8_unicode_ci',
-        'prefix' => 8
+        'prefix' => ''
     ],
 
     'sqlite' => [
