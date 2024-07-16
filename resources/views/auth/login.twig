@@ -4,6 +4,7 @@
 {% block content %}
   
     <form action='/login' method='post'>
+        {{ csrf() | raw}}
          <div>
             <label for='email'>Email</label>
             <input type='email' id='email' name='email'>

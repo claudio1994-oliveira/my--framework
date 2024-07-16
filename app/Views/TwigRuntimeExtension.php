@@ -5,6 +5,7 @@ namespace App\Views;
 use App\Config\Config;
 use Cartalyst\Sentinel\Sentinel;
 use Psr\Container\ContainerInterface;
+use Symfony\Component\Console\Input\Input;
 use Twig\Extension\AbstractExtension;
 
 class TwigRuntimeExtension extends AbstractExtension
@@ -21,5 +22,15 @@ class TwigRuntimeExtension extends AbstractExtension
     public function auth()
     {
         return $this->container->get(Sentinel::class);
+    }
+
+    public function csrf()
+    {
+        $guard = $this->container->get('csrf');
+
+        return '
+            <input type="hidden" name="' . $guard->getTokenNameKey() . '" value="' . $guard->getTokenName() . '">
+            <input type="hidden" name="' . $guard->getTokenValueKey() . '" value="' . $guard->getTokenValue() . '">
+        ';
     }
 }
