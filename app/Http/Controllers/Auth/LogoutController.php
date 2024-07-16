@@ -7,10 +7,11 @@ namespace App\Http\Controllers\Auth;
 use Cartalyst\Sentinel\Sentinel;
 use Laminas\Diactoros\Response\RedirectResponse;
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class LogoutController
 {
-    public function __construct(protected Sentinel $auth)
+    public function __construct(protected Sentinel $auth, protected Session $session)
     {
     }
 
@@ -20,6 +21,8 @@ class LogoutController
     {
         $this->auth->logout($this->auth->getUser());
 
-        return new RedirectResponse('/login');
+        $this->session->getFlashBag()->add('message', 'You have been logged out.');
+
+        return new RedirectResponse('/');
     }
 }

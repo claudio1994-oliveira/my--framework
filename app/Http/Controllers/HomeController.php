@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Config\Config;
 use App\Views\View;
+use App\Config\Config;
 use Laminas\Diactoros\Response;
 
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class HomeController
 {
-    public function __construct(protected Config $config, protected View $view)
+    public function __construct(protected Config $config, protected View $view, protected Session $session)
     {
     }
 
@@ -22,7 +23,10 @@ class HomeController
 
         $response->getBody()->write(
 
-            $this->view->render('home.twig', ['name' => 'No Framework'])
+            $this->view->render('home.twig', [
+                'name' => 'No Framework',
+                'message' => $this->session->getFlashBag()->get('message')
+            ])
 
         );
 
