@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use League\Route\Router;
 use Psr\Container\ContainerInterface;
 use App\Http\Controllers\HomeController;
@@ -18,6 +19,8 @@ return static function (Router $router, ContainerInterface $container) {
 
     $router->get('/login', [LoginController::class, "index"]);
     $router->post('/login', [LoginController::class, "store"]);
+
+    $router->post('/logout', LogoutController::class);
 
     $router->get('/users/{user}', UserController::class);
 };
