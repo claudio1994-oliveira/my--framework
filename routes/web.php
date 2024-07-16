@@ -11,6 +11,8 @@ use App\Http\Controllers\Auth\RegisterController;
 
 return static function (Router $router, ContainerInterface $container) {
 
+    $router->middleware($container->get('csrf'));
+
     $router->get('/', HomeController::class);
     $router->get('/dashboard', DashboardController::class);
 
