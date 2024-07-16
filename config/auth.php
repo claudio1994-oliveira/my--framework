@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -33,7 +35,7 @@ return [
     */
 
     'users' => [
-        'model' => 'Cartalyst\Sentinel\Users\EloquentUser',
+        'model' => User::class,
     ],
 
     /*
