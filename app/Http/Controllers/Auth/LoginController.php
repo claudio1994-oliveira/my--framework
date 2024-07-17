@@ -55,6 +55,10 @@ class LoginController
 
 
         if (!$this->auth->authenticate($request->getParsedBody())) {
+            $this->session->getFlashBag()->add('errors', [
+                'email' => 'Could not log you in whit those details.'
+            ]);
+
             return new RedirectResponse('/login');
         }
 
