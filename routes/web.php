@@ -18,6 +18,7 @@ use Psr\Container\ContainerInterface;
 return static function (Router $router, ContainerInterface $container) {
 
     $router->middleware($container->get('csrf'));
+    $router->middleware(new FlashOldDataMiddleware());
 
     $router->get('/', HomeController::class);
 
