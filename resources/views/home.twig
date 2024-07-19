@@ -1,12 +1,17 @@
 {% extends 'layouts/app.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Home
+{% endblock %}
 {% block content %}
 
-    
-    <div>
-        <h2>Welcome to My Web Page</h2>
-        <p>This is the content of my web page.</p>
-    </div>
-{% endblock %}
 
+	<div>
+		<h2>Welcome to My Web Page</h2>
+		<p>This is the content of my web page.</p>
+	</div>
+	<div>
+		{% for user in users %}
+			{{ user.first_name }}
+		{% endfor %}
+	</div>
+{% endblock %}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Views\View;
 use App\Config\Config;
+use App\Models\User;
 use Laminas\Diactoros\Response;
 
 use Psr\Http\Message\ServerRequestInterface;
@@ -25,7 +26,7 @@ class HomeController
 
             $this->view->render('home.twig', [
                 'name' => 'No Framework',
-
+                'users' => User::paginate(1)
             ])
 
         );
