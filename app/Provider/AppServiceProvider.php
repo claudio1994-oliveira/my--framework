@@ -31,19 +31,19 @@ class AppServiceProvider extends AbstractServiceProvider implements BootableServ
         );
 
         Paginator::currentPathResolver(function () {
-            return strtok($this->container->get(Request::class)->getUri(), '?');
+            return strtok(app(Request::class)->getUri(), '?');
         });
 
         Paginator::currentPageResolver(function () {
-            return $this->container->get(Request::class)->getQueryParams();
+            return app(Request::class)->getQueryParams();
         });
 
         Paginator::currentPageResolver(function ($pageName = 'page') {
-            return $this->container->get(Request::class)->getQueryParams()[$pageName] ?? 1;
+            return app(Request::class)->getQueryParams()[$pageName] ?? 1;
         });
 
         Paginator::viewFactoryResolver(function () {
-            return $this->container->get(View::class);
+            return app(View::class);
         });
 
         Paginator::defaultView('pagination/default.twig');

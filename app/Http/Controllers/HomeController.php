@@ -19,21 +19,9 @@ class HomeController
     public function __invoke(ServerRequestInterface $request)
     {
 
-        $response = new Response();
-
-
-        $response->getBody()->write(
-
-            $this->view->render('home.twig', [
-                'name' => 'No Framework',
-                'users' => User::paginate(1)
-            ])
-
-        );
-
-
-
-
-        return $response;
+        return view('home.twig', [
+            'name' => 'No Framework',
+            'users' => User::paginate(1)
+        ]);
     }
 }

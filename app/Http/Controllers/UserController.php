@@ -21,18 +21,6 @@ class UserController
 
         $user = User::find($userId);
 
-        $response = new Response();
-
-
-        $response->getBody()->write(
-
-            $this->view->render('user.twig', ['user' => $user])
-
-        );
-
-
-
-
-        return $response;
+        return view('user.twig', ['user' => $user]);
     }
 }

@@ -18,19 +18,6 @@ class DashboardController
     public function __invoke(ServerRequestInterface $request)
     {
 
-
-        $response = new Response();
-
-
-        $response->getBody()->write(
-
-            $this->view->render('dashboard.twig', ['users' => User::all()])
-
-        );
-
-
-
-
-        return $response;
+        return view('dashboard.twig', ['users' => User::all()]);
     }
 }

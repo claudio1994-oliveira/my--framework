@@ -35,5 +35,5 @@ return static function (Router $router, ContainerInterface $container) {
         $route->post('/logout', LogoutController::class);
     })->middleware(new RedirectIfGuest());
 
-    $router->get('/users/{user}', UserController::class);
+    $router->get('/users/{user}', UserController::class)->setName('users.show');
 };

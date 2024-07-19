@@ -13,7 +13,7 @@
 		{% if users is not empty %}
 			{% for user in users %}
 				<div>
-					{{ user.first_name }}
+					<a href="{{ route('users.show', { 'user': user.id }) }}">{{ user.first_name }}</a>
 				</div>
 			{% endfor %}
 
