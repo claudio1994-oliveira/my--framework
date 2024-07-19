@@ -2,12 +2,13 @@
 
 namespace App\Provider;
 
+use Slim\Csrf\Guard;
 use App\Config\Config;
-use Laminas\Diactoros\ResponseFactory;
 use Spatie\Ignition\Ignition;
+use Laminas\Diactoros\ResponseFactory;
+use App\Validation\Exceptions\CsrfTokenException;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
-use Slim\Csrf\Guard;
 
 class CsrfServiceProvider extends AbstractServiceProvider implements BootableServiceProviderInterface
 {
@@ -16,7 +17,13 @@ class CsrfServiceProvider extends AbstractServiceProvider implements BootableSer
     {
         $this->getContainer()->add('csrf', function () {
 
-            return new Guard(new ResponseFactory());
+            $guard = new Guard(new ResponseFactory());
+
+            $guard->setFailureHandler(function () {
+                throw new CsrfTokenException();
+            });
+
+            return $guard;
         })
             ->setShared(true);
     }
