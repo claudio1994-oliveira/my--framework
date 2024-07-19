@@ -24,7 +24,7 @@ class ExceptionHandler
         throw $exception;
     }
 
-    protected function getErrorView(Throwable $exception): string
+    protected function getErrorView(Throwable $exception)
     {
         if (!method_exists($exception, 'getStatusCode')) {
             return null;

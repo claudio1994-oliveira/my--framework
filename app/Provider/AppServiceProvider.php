@@ -2,6 +2,7 @@
 
 namespace App\Provider;
 
+use App\Views\View;
 use App\Config\Config;
 use Spatie\Ignition\Ignition;
 use Laminas\Diactoros\Request;
@@ -40,6 +41,12 @@ class AppServiceProvider extends AbstractServiceProvider implements BootableServ
         Paginator::currentPageResolver(function ($pageName = 'page') {
             return $this->container->get(Request::class)->getQueryParams()[$pageName] ?? 1;
         });
+
+        Paginator::viewFactoryResolver(function () {
+            return $this->container->get(View::class);
+        });
+
+        Paginator::defaultView('pagination/default.twig');
     }
 
     public function provides(string $id): bool

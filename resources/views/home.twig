@@ -10,8 +10,14 @@
 		<p>This is the content of my web page.</p>
 	</div>
 	<div>
-		{% for user in users %}
-			{{ user.first_name }}
-		{% endfor %}
+		{% if users is not empty %}
+			{% for user in users %}
+				<div>
+					{{ user.first_name }}
+				</div>
+			{% endfor %}
+
+			{{ users.links() | raw }}
+		{% endif %}
 	</div>
 {% endblock %}
